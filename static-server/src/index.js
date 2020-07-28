@@ -20,9 +20,6 @@ app.use(async (ctx, next) => {
     ctx.response.type = mine;
   }
   ctx.response.body = content;
-  // ctx.response.type = 'text/html';
-  // ctx.response.status = 200;
-  // ctx.response.body = '<div>Hello Koa</div>';
 });
 
 app.listen(3000);

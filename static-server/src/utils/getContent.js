@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const getDirContent = (path) => {
-  let list = fs.readdirSync(path, {withFileTypes: true}), content = '', dirList = [], fileList = [];
+const getDirContent = (path, realPath) => {
+  let list = fs.readdirSync(realPath, {withFileTypes: true}), content = '', dirList = [], fileList = [];
   list = list.filter(item => item.name[0] !== '.');
   list.forEach(item => {
     if (item.isDirectory()) {
@@ -34,9 +34,10 @@ const getFileContent = (path) => {
 
 const getContent = (staticPath, ctx) => {
   const realPath = path.join(staticPath, ctx.url);
+  console.log('staticPath：', staticPath, 'ctx url：', ctx.url, 'realPath：', realPath)
   const stat = fs.statSync(realPath);
   if (stat.isDirectory()) {
-    return getDirContent(realPath);
+    return getDirContent(ctx.path, realPath);
   } else if (stat.isFile()) {
     return getFileContent(realPath);
   }
