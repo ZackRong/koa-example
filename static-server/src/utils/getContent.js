@@ -32,7 +32,7 @@ const getFileContent = (path) => {
   return fs.readFileSync(path);
 }
 
-const getContent = (staticPath, ctx) => {
+const getContent = async (staticPath, ctx) => {
   const realPath = path.join(staticPath, ctx.url);
   console.log('staticPath：', staticPath, 'ctx url：', ctx.url, 'realPath：', realPath)
   const stat = fs.statSync(realPath);
