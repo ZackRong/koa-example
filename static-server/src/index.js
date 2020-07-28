@@ -5,7 +5,7 @@ const mines = require('./utils/mines');
 
 const app = new koa();
 
-const basePath = './static';
+const basePath = './assets';
 
 function parseMime(url) {
   let extName = path.extname(url)
