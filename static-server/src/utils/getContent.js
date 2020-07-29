@@ -33,8 +33,8 @@ const getFileContent = (path) => {
 }
 
 const getContent = async (staticPath, ctx) => {
-  const realPath = path.join(staticPath, ctx.url);
-  console.log('staticPath：', staticPath, 'ctx url：', ctx.url, 'realPath：', realPath)
+  // ctx.path是相对于根目录的，所以文件的实际路径是：目录+ctx.path
+  const realPath = path.join(staticPath, ctx.path);
   const stat = fs.statSync(realPath);
   if (stat.isDirectory()) {
     return getDirContent(ctx.path, realPath);
