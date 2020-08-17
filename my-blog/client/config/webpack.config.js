@@ -383,6 +383,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  ['import', { libraryName: 'antd', style: true }],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -417,7 +418,7 @@ module.exports = function(webpackEnv) {
                 // code.  Without the options below, debuggers like VSCode
                 // show incorrect code and set breakpoints on the wrong lines.
                 sourceMaps: shouldUseSourceMap,
-                inputSourceMap: shouldUseSourceMap,
+                inputSourceMap: shouldUseSourceMap
               },
             },
             // "postcss" loader applies autoprefixer to our CSS.
@@ -489,10 +490,32 @@ module.exports = function(webpackEnv) {
             {
               test: /\.less$/,
               use: [
-                'style-loader',
-                'css-loader',
-                'less-loader'
-              ]
+                require.resolve('style-loader'),
+                require.resolve('css-loader'),
+                // {
+                //   loader: require.resolve('postcss-loader'),
+                //   options: {
+                //     ident: 'postcss',
+                //     plugins: () => [
+                //       autoprefixer({
+                //         browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+                //       }),
+                //       pxtorem({ rootValue: 100, propWhiteList: [] })
+                //     ],
+                //   },
+                // },
+                {
+                  loader: require.resolve('less-loader'),
+                  options: {
+                    lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
+                      modifyVars: {
+                        'primary-color': '#1DA57A',
+                      },
+                      javascriptEnabled: true,
+                    },
+                  },
+                }
+              ],
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
