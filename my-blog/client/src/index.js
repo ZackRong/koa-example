@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import Home from './routes/Home';
+import { Home } from './routes';
 
 class App extends Component {
   render() {

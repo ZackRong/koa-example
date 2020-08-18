@@ -1,0 +1,29 @@
+.my-blog-component-header{
+  display: flex;
+  align-items: center;
+  background-color: #143240;
+  padding: 0 16px;
+  &-menu{
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    color: rgba(255, 255, 255, .85);
+    a{
+      display: inline-block;
+      padding: 16px;
+      cursor: pointer;
+      position: relative;
+      .anticon{
+        margin-right: 4px;
+      }
+      &:hover{
+        background-color: #1DA57A;
+      }
+    }
+  }
+  &-user-info{
+    color: rgba(255, 255, 255, .85);
+    font-size: 14px;
+    padding: 16px;
+  }
+}
