@@ -2,7 +2,7 @@
 const MySQLConfig = {
   'DATABASE': 'rongzhx',
   'USERNAME': 'root',
-  'PASSWORD': 'rongzhx123',
+  'PASSWORD': 'rzx81811145',
   'PORT': '3306',
   'HOST': 'localhost'
 };

@@ -1,7 +1,6 @@
 const Router = require('koa-router');
 const fs = require('fs');
 const { resolve } = require('path');
-const userRouter = require('./user');
 
 const router = new Router();
 
